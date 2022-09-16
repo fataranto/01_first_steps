@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blah blah blah thre.js</title>
+</head>
+<body>
+    <script src="js/three.js"></script>
+
+    <script>
+        //1- Create a scene
+        const scene = new THREE.Scene();
+        //2- Create a camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        //3- Create a renderer
+        const renderer = new THREE.WebGLRenderer();
+        //4- Set the size of the renderer
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        //5- Append the renderer to the body
+        document.body.appendChild(renderer.domElement);
+        //6- Create a geometry
+        const geometry = new THREE.BoxGeometry();
+        //7- Create a material
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        //8- Create a mesh
+        const cube = new THREE.Mesh(geometry, material);
+        //9- Add the mesh to the scene
+        scene.add(cube);
+        //10- Set the camera position
+        camera.position.z = 5;
+        //11- Create a render function
+        const render = function () {
+            requestAnimationFrame(render);
+            //12- Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            //13- Render the scene
+            renderer.render(scene, camera);
+        };
+        //14- Call the render function
+        render();
+
+
+
+
+    </script>
+    
+</body>
+</html> 
